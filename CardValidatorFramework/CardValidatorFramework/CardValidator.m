@@ -20,7 +20,7 @@
    @param cardNumber - string representation of number of card
    @return true if number is valid otherwise false
 */
-+ (BOOL) ValidateCardLocal:(NSString *_Nonnull)cardNumber {
++ (BOOL) validateCardLocal:(NSString *_Nonnull)cardNumber {
     if ([cardNumber length] < MIN_CARD_NUMBER_LENGTH ||
         [cardNumber length] > MAX_CARD_NUMBER_LENGTH) {
         return NO;
@@ -57,7 +57,7 @@
    @param cardNumber - string representation of number of card
    @param callback - callback that returns Card object or nil and nil or  error message
 */
-+ (void) ValidateCardOnline:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback {
++ (void) validateCardOnline:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback {
     NSString *targetUrl = [NSString stringWithFormat:SERVER_ENDPOINT_FORMAT, cardNumber];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
@@ -92,9 +92,9 @@
    @param cardNumber - string representation of number of card
    @param callback - callback that returns Card object or nil and nil or  error message
 */
-+ (void) ValidateCardFull:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback {
-    if ([CardValidator ValidateCardLocal:cardNumber]) {
-        [CardValidator ValidateCardOnline:cardNumber callback:^(Card *result, NSString *errorMessage) {
++ (void) validateCardFull:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback {
+    if ([CardValidator validateCardLocal:cardNumber]) {
+        [CardValidator validateCardOnline:cardNumber callback:^(Card *result, NSString *errorMessage) {
             callback(result, errorMessage);
         }];
     }

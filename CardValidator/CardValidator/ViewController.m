@@ -20,7 +20,7 @@
     Callback for "Validate" button
  */
 - (IBAction)OnButtonValidateClicked:(id)sender {
-    [CardValidator ValidateCardFull:self.inputField.text callback:^(Card *result, NSString *errorMessage) {
+    [CardValidator validateCardFull:self.inputField.text callback:^(Card *result, NSString *errorMessage) {
         
         NSString *alertMessage;
         if (result) {

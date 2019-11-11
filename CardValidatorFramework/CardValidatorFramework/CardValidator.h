@@ -19,19 +19,19 @@ NS_ASSUME_NONNULL_BEGIN
     @param cardNumber - string representation of number of card
     @return true if number is valid otherwise false
  */
-+ (BOOL) ValidateCardLocal:(NSString *_Nonnull)cardNumber;
++ (BOOL) validateCardLocal:(NSString *_Nonnull)cardNumber;
 /**
    Validate number of card  using  API of binlist.net
    @param cardNumber - string representation of number of card
    @param callback - callback that returns Card object or nil and nil or  error message
 */
-+ (void) ValidateCardOnline:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback;
++ (void) validateCardOnline:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback;
 /**
    Validate number of card  using local validation and  API of binlist.net
    @param cardNumber - string representation of number of card
    @param callback - callback that returns Card object or nil and nil or  error message
 */
-+ (void) ValidateCardFull:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback;
++ (void) validateCardFull:(NSString *_Nonnull)cardNumber callback:(void (^)(Card *result, NSString *errorMessage))callback;
 
 @end
 
